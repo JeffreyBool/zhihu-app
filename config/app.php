@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', '知乎'),
 
     /*
     |--------------------------------------------------------------------------
@@ -166,9 +166,11 @@ return [
         /*
          * Package Service Providers...
          */
+
         Laravel\Tinker\TinkerServiceProvider::class,
-        Naux\Mail\SendCloudServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Naux\Mail\SendCloudServiceProvider::class,  /**sendC邮箱发送**/
+        Laracasts\Flash\FlashServiceProvider::class,  /**提示信息a**/
 
         /*
          * Application Service Providers...
