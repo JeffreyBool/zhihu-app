@@ -171,6 +171,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Naux\Mail\SendCloudServiceProvider::class,  /**sendC邮箱发送**/
         Laracasts\Flash\FlashServiceProvider::class,  /**提示信息a**/
+        Overtrue\LaravelUEditor\UEditorServiceProvider::class, /**百度编辑器**/
 
         /*
          * Application Service Providers...
