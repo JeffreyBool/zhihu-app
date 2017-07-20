@@ -1,12 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\StoreQuestionRequest;
 use App\Question;
 use Auth;
 use Illuminate\Http\Request;
 
 class QuestionsController extends Controller
 {
+    public function __construct ()
+    {
+        $this->middleware('auth')->except('index','show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +39,7 @@ class QuestionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreQuestionRequest $request)
     {
         $data = [
             'title'=>$request->get('title'),
@@ -42,7 +48,7 @@ class QuestionsController extends Controller
         ];
 
         $question = Question::create($data);
-        return redirect()->route('question.show', [$question->id]);
+        return redirect(Route('questions.show',$question->id));
     }
 
     /**
@@ -55,7 +61,7 @@ class QuestionsController extends Controller
     {
         $question = Question::find($id);
 
-        return $question;
+        return view('questions.show',compact('question'));
     }
 
     /**
