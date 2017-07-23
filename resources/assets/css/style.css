@@ -1,0 +1,35 @@
+/** 问题页面标签样式**/
+.Popover{
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 10px;
+    margin-right: -5px;
+    display: flex;
+}
+.Popover a{
+    margin: 3px 5px 3px 0;
+    vertical-align: middle;
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    padding: 0 12px;
+    font-size: 14px;
+    line-height: 30px;
+    color: #3e7ac2;
+    vertical-align: top;
+    background: #eef4fa;
+    border-radius: 100px;
+}
+
+/** 编辑 **/
+.actions{
+    display: flex;
+    padding: 10px 20px;
+}

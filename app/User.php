@@ -30,6 +30,16 @@ class User extends Authenticatable
     ];
 
 
+    /**
+     * @param Model $model
+     *
+     * @return mixed
+     */
+    public function owns(Question $model)
+    {
+        return $this->id == $model->user_id;
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $data = ['url' => url('password/reset',$token)];
