@@ -1,51 +1,72 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## Laravel-Zhihu
+基于**Laravel5.4** 开发
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## 前言
+基于 [laravist](https://www.laravist.com/)社区知乎系列项目
+后台模板采用 [AdminLTE-For_Laravel](https://github.com/GeekGhc/adminLTE-for-laravel)
 
-## About Laravel
+## 功能
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+### 用户
+- [x] 登录注册(邮件认证)
+- [x] 用户设置
+- [x] 头像上传至七牛云存储
+- [x] 修改密码
+- [x] 忘记密码(邮件认证)
+- [x] 用户相互关注(邮件提醒)
+- [x] 用户发送私信(消息通知)
+- [x] 显示私信(已读和未读)
+- [x] 标志私信
+- [x] 标志私信全部已读
+- [x] 回复私信
+- [x] 个人主页(各项数据)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 问题
+- [x] 问题列表
+- [x] 收藏问题(消息通知)
+- [x] 分享问题到第三方
+- [x] 问题答案评论(消息通知)
+- [x] 问题评论,答案评论(消息通知)
+- [x] 答案点赞
+- [x] 发布问题
+- [x] 修改问题(仅限问题的作者)
+- [x] 删除问题(仅限问题的作者)
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+### 后台
+- [x] 系统用户
+- [x] 系统用户资料修改,删除
+- [x] 管理员资料修改
+- [x] 创建问题(可置顶)
+- [x] 编辑问题(对任何用户的问题)
+- [x] 删除问题(对任何用户的问题)
+- [x] 问题评论
+- [x] 删除问题评论(对任何用户的评论)
+- [x] 文章标签
+- [x] 删除文章标签
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+## 安装
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+> 前台部分为1.0版本 前后台为2.0版本
 
-## Laravel Sponsors
+### 1.克隆源码到本地
+> git clone https://github.com/kenuocn/zhihu-app
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+### 2.进入项目目录
+> cd zhihu-app
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+### 3. 拷贝`.env`文件
+一些 `secret key` 改成自己服务的`key`即可
+> cp .env.example .env
 
-## Contributing
+### 4. 下载相关的依赖包(也可以使用yarn)
+下载`laravel`相关依赖的包
+> composer install
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+### 5. 创建数据
+> php artisan zhihu:install
 
-## Security Vulnerabilities
+### 6.管理员创建
+> php artisan create:admin
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+填写完指令要求信息后 管理员创建成功
