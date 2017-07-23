@@ -114,7 +114,7 @@ class QuestionsController extends Controller
     {
         $question = $this->questionRepository->byId($id);
         $topics = $this->topicRepository->normalizeTopic($request->get('topics'));
-        $res = $question->update([
+        $question->update([
             'title'=>$request->get('title'),
             'content'=>$request->get('content')
         ]);
@@ -132,6 +132,13 @@ class QuestionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $question = $this->questionRepository->byId($id);
+        if(Auth::user()->owns($question))
+        {
+            $question->delete();
+            return redirect('/');
+        }
+
+        Response('Forbidden', 403);
     }
 }

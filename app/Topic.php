@@ -12,4 +12,9 @@ class Topic extends Model
     {
         return $this->belongsToMany(Question::class)->withTimestamps();
     }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }
