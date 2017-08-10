@@ -37,6 +37,14 @@ class Question extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(User::class,'user_question')->withTimestamps();
+    }
+
+    /**
      * @param $query
      *
      * @return mixed

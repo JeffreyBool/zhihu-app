@@ -1,19 +1,8 @@
 /** 问题页面标签样式**/
-.Popover{
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+.topics{
     padding: 10px;
-    margin-right: -5px;
-    display: flex;
 }
-.Popover a{
+.topics a{
     margin: 3px 5px 3px 0;
     vertical-align: middle;
     position: relative;
@@ -83,3 +72,4 @@
 .notifications.unread {
     background: #fff9ea;
 }
+

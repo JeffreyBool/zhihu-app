@@ -77,11 +77,11 @@ class QuestionsController extends Controller
      */
     public function show($id)
     {
-        $question = $this->questionRepository->byIdWithTopics($id);
-        if(Auth::user()->owns($question))
-        {
+        $question = $this->questionRepository->byIdWithTopicsAnswers($id);
+//        if(Auth::user()->owns($question))
+//        {
             return view('questions.show',compact('question'));
-        }
+//        }
 
         return back();
     }

@@ -8,7 +8,7 @@
                     <div class="media">
                         <div class="media-left">
                             <a href="{{$question->user->avater}}" >
-                                <img src="{{$question->user->avatar}}" alt="$question->user->name" width="40">
+                                <img src="{{$question->user->avatar}}" alt="{{$question->user->name}}" width="40">
                             </a>
                         </div>
                         <div class="media-body">

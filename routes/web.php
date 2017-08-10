@@ -21,4 +21,6 @@ Route::get('email/verify/{token}',['as'=>'email.verify', 'uses'=>'EmailControlle
 
 Route::resource('questions','QuestionsController');
 
-//Route::post('questions/{$question}/answer','AnswersController/store');
+Route::post('questions/{question}/answer','AnswersController@store');
+
+Route::get('question/{question}/follow','QuestionFollowController@follow');

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar' ,'confirmation_token',
+        'name', 'email', 'password', 'avatar' ,'confirmation_token','api_token',
     ];
 
     /**
@@ -40,6 +40,45 @@ class User extends Authenticatable
         return $this->id == $model->user_id;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function follows()
+    {
+        return $this->belongsToMany(Question::class,'user_question')->withTimestamps();
+    }
+
+    /**
+     * @param $question
+     *
+     * @return array
+     */
+    public function followThis($question)
+    {
+        return $this->follows()->toggle($question);
+    }
+
+    /**
+     * @param $question
+     *
+     * @return mixed
+     */
+    public function followed($question)
+    {
+        return !! $this->follows()->where('question_id',$question)->count();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(self::class,'followers','follower_id','followed_id')->withTimestamps();
+    }
+
+    /**
+     * @param string $token
+     */
     public function sendPasswordResetNotification($token)
     {
         $data = ['url' => url('password/reset',$token)];

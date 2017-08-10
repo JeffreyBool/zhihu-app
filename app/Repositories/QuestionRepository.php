@@ -22,9 +22,9 @@ class QuestionRepository
      *
      * @return mixed
      */
-    public function byIdWithTopics($id)
+    public function byIdWithTopicsAnswers($id)
     {
-        return Question::where('id',$id)->with('topics')->first();
+        return Question::where('id',$id)->with(['topics','answers'])->first();
     }
 
     /**
