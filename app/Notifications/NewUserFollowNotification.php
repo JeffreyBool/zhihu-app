@@ -2,6 +2,8 @@
 
 namespace App\Notifications;
 
+use App\Channels\SendcloudChannel;
+use App\Mailer\UserEmailer;
 use Auth;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -30,7 +32,7 @@ class NewUserFollowNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database',SendcloudChannel::class];
     }
 
     public function toDatabase($notifiable)
@@ -39,6 +41,14 @@ class NewUserFollowNotification extends Notification
             'id'=> Auth::guard('api')->user()->id,
             'name'=> Auth::guard('api')->user()->name,
         ];
+    }
+
+    /**
+     * @param $notifiable
+     */
+    public function toSendcloud($notifiable)
+    {
+        (new UserEmailer())->followNotifyEmail($notifiable->email);
     }
 
     /**

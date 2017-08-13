@@ -2,10 +2,9 @@
 
 namespace App;
 
-use Mail;
+use App\Mailer\UserEmailer;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Naux\Mail\SendCloudTemplate;
 
 class User extends Authenticatable
 {
@@ -99,13 +98,6 @@ class User extends Authenticatable
      */
     public function sendPasswordResetNotification($token)
     {
-        $data = ['url' => url('password/reset',$token)];
-        $template = new SendCloudTemplate('zhihu_app_reset', $data);
-
-        Mail::raw($template, function ($message)
-        {
-            $message->from('1402992668@qq.com', 'yicms');
-            $message->to($this->email);
-        });
+        (new UserEmailer())->passwordRest($this->email,$token);
     }
 }

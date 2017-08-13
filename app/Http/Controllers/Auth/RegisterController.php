@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mailer\UserEmailer;
 use App\User;
-use Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Naux\Mail\SendCloudTemplate;
 
 class RegisterController extends Controller
 {
@@ -81,18 +80,7 @@ class RegisterController extends Controller
      */
     private function sendVerifyEmailTo ($user)
     {
-        // 模板变量
-        $data = [
-            'url' => route('email.verify',['token'=>$user->confirmation_token]),
-            'name'=>$user->name,
-        ];
-        $template = new SendCloudTemplate('zhihu_app_register', $data);
-
-        Mail::raw($template, function ($message) use($user)
-        {
-            $message->from('1402992668@qq.com', 'yicms');
-            $message->to($user->email);
-        });
+        (new UserEmailer())->welcome($user);
     }
 }
 
