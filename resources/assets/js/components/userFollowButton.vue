@@ -12,7 +12,7 @@
         props:['user'],
         mounted() {
             var self = this;
-            axios.get('/api/user/followers',{'user':this.user}).then(response => {
+            axios.get('/api/user/followers/'+this.user).then(response => {
                 self.followed = response.data.followed;
             })
         },

@@ -77,6 +77,24 @@ class User extends Authenticatable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function followersUser()
+    {
+        return $this->belongsToMany(self::class,'followers','followed_id','follower_id')->withTimestamps();
+    }
+
+    /**
+     * @param $userId
+     *
+     * @return array
+     */
+    public function followThisUser($userId)
+    {
+        return $this->followers()->toggle($userId);
+    }
+
+    /**
      * @param string $token
      */
     public function sendPasswordResetNotification($token)

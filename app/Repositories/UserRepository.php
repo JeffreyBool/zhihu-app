@@ -9,6 +9,8 @@
 namespace App\Repositories;
 
 
+use App\User;
+
 /**
  * Class UserRepository
  * @package App\Repositories
